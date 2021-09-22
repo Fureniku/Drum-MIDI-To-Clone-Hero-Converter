@@ -5,11 +5,8 @@ import com.fureniku.miditochdrums.panels.*;
 import javax.sound.midi.*;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class ConverterScreen extends JFrame {
 
@@ -64,6 +61,7 @@ public class ConverterScreen extends JFrame {
             Sequence seq = MidiSystem.getSequence(midiFile);
 
             System.out.println("Loaded MIDI file, which has " + seq.getTracks().length + " tracks.");
+            System.out.println("Converting with a ratio of " + panelOptions.getMIDIRatio());
 
             for (int i = 0; i < seq.getTracks().length; i++) {
                 Track track = seq.getTracks()[i];
@@ -83,12 +81,11 @@ public class ConverterScreen extends JFrame {
                         channelActivity[sm.getChannel()]++;
                         if (sm.getChannel() == panelOptions.getMidiChannel()-1) {
                             if (sm.getCommand() == ShortMessage.NOTE_ON) {
-                                long tick = Math.round(event.getTick()/2.5);
+                                long tick = Math.round(event.getTick() / panelOptions.getMIDIRatio());
                                 if (firstTick <= 0) {
                                     firstTick = tick;
                                 }
                                 int key = sm.getData1();
-                                System.out.println("Key " + key + " at " + tick);
                                 if (panelNotes.isKick(key)) {
                                     if (panelOptions.shouldAuto2xKick()) {
                                         if (!lastWasDouble && lastKick + panelOptions.getKickTime() > tick) {
@@ -120,8 +117,6 @@ public class ConverterScreen extends JFrame {
                                     panelOutput.addError("Unknown drum ID " + key + " at position " + tick + "\n");
                                 }
                             }
-                        } else {
-                            System.out.println("Event occurred on channel " + sm.getChannel() + ", we are checking " + panelOptions.getMidiChannel());
                         }
                     }
                 }

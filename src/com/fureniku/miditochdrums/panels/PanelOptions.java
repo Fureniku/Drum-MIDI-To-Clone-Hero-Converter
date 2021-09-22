@@ -10,11 +10,14 @@ public class PanelOptions extends PanelUI {
     JTextField startPos = new JTextField("768");
     JTextField kickTime = new JTextField("96");
     JTextField channelId = new JTextField("10");
+    JTextField midiTicks = new JTextField("1920");
+    JTextField chTicks = new JTextField("768");
     JCheckBox fullFile = new JCheckBox("Full File", true);
     JCheckBox auto2xKick = new JCheckBox("Auto 2x Kick",true);
     JLabel startPosLabel = new JLabel("Drum Start Time:");
     JLabel kickTimeLabel = new JLabel("Max Kick Time:");
     JLabel channelIdLabel = new JLabel("Drum MIDI Channel ID (Default is 10):");
+    JLabel ticksLabel = new JLabel("< MIDI ticks to Clone Hero Ticks >");
 
     GridBagLayout layout = new GridBagLayout();
 
@@ -70,19 +73,40 @@ public class PanelOptions extends PanelUI {
         c.anchor = GridBagConstraints.CENTER;
         this.add(kickTime, c);
 
-        c.gridx = 0;
-        c.gridy = 2;
-        c.weightx = 0.5;
-        c.insets = new Insets(5,5,10,10);
-        c.anchor = GridBagConstraints.CENTER;
-        this.add(channelIdLabel, c);
-
         c.gridx = 1;
         c.gridy = 2;
         c.weightx = 0.5;
-        c.insets = new Insets(5,10,10,5);
+        c.insets = new Insets(5,5,5,10);
+        c.anchor = GridBagConstraints.CENTER;
+        this.add(channelIdLabel, c);
+
+        c.gridx = 2;
+        c.gridy = 2;
+        c.weightx = 0.5;
+        c.insets = new Insets(5,5,5,10);
         c.anchor = GridBagConstraints.CENTER;
         this.add(channelId, c);
+
+        c.gridx = 0;
+        c.gridy = 3;
+        c.weightx = 0.25;
+        c.insets = new Insets(5,10,10,5);
+        c.anchor = GridBagConstraints.CENTER;
+        this.add(midiTicks, c);
+
+        c.gridx = 1;
+        c.gridy = 3;
+        c.weightx = 0.5;
+        c.insets = new Insets(5,5,10,5);
+        c.anchor = GridBagConstraints.CENTER;
+        this.add(ticksLabel, c);
+
+        c.gridx = 2;
+        c.gridy = 3;
+        c.weightx = 0.25;
+        c.insets = new Insets(5,5,10,10);
+        c.anchor = GridBagConstraints.CENTER;
+        this.add(chTicks, c);
     }
 
     public boolean shouldCreateFullFile() {
@@ -104,5 +128,9 @@ public class PanelOptions extends PanelUI {
 
     public int getMidiChannel() {
         return Integer.valueOf(channelId.getText());
+    }
+
+    public double getMIDIRatio() {
+        return Double.valueOf(midiTicks.getText()) / Double.valueOf(chTicks.getText());
     }
 }
