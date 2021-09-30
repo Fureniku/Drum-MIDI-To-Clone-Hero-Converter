@@ -126,8 +126,24 @@ public class PanelOptions extends PanelUI {
         return Integer.valueOf(startPos.getText());
     }
 
-    public int getMidiChannel() {
-        return Integer.valueOf(channelId.getText());
+    public int[] getMidiChannels() {
+        String[] str = channelId.getText().replaceAll(" ", "").split(",");
+        int[] out = new int[str.length];
+        for (int i = 0; i < str.length; i++) {
+            out[i] = Integer.valueOf(str[i]);
+        }
+
+        return out;
+    }
+
+    public boolean isValidChannel(int channel) {
+        int[] channels = getMidiChannels();
+        for (int i = 0; i < channels.length; i++) {
+            if (channels[i]-1 == channel) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public double getMIDIRatio() {

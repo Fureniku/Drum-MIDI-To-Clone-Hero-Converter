@@ -23,7 +23,7 @@ public class PanelNotes extends PanelUI {
     JTextField blueText = new JTextField("47"); //3
     JTextField greenText = new JTextField("41,43,45"); //4
     JTextField cymbalYellowText = new JTextField("42,46,54,55,95"); //2
-    JTextField cymbalBlueText = new JTextField("52,53,59"); //3
+    JTextField cymbalBlueText = new JTextField("51,52,53,59"); //3
     JTextField cymbalGreenText = new JTextField("49,57"); //4
     JTextField ignoredText = new JTextField("0");
 
@@ -139,7 +139,6 @@ public class PanelNotes extends PanelUI {
 
     public boolean isCorrectDrum(JTextField text, int id) {
         String[] str = text.getText().replaceAll(" ", "").split(",");
-        int[] out = new int[str.length];
         for (int i = 0; i < str.length; i++) {
             if (Integer.valueOf(str[i]) == id) {
                 return true;

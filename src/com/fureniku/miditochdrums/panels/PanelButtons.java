@@ -14,6 +14,7 @@ public class PanelButtons extends PanelUI {
     public JButton clear = new JButton("Clear");
     public JButton convert = new JButton("Convert!");
     public JButton copy = new JButton("Copy");
+    public JButton generateFile = new JButton("Generate File");
 
     GridBagLayout layout = new GridBagLayout();
 
@@ -24,6 +25,7 @@ public class PanelButtons extends PanelUI {
         parentConstraints.fill = GridBagConstraints.BOTH;
 
         convert.setEnabled(false);
+        generateFile.setEnabled(false);
 
         convert.addActionListener(new ActionListener() {
             @Override
@@ -37,6 +39,7 @@ public class PanelButtons extends PanelUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 parent.clear();
+                generateFile.setText("Generate File");
             }
         });
 
@@ -46,6 +49,13 @@ public class PanelButtons extends PanelUI {
                 StringSelection stringSelection = new StringSelection(parent.getOutput());
                 Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
                 clipboard.setContents(stringSelection, null);
+            }
+        });
+
+        generateFile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                generateFile.setText("File generated!");
             }
         });
 
@@ -72,5 +82,6 @@ public class PanelButtons extends PanelUI {
         this.add(clear);
         this.add(convert);
         this.add(copy);
+        //this.add(generateFile);
     }
 }

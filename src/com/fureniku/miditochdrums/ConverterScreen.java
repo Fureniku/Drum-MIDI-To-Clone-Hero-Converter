@@ -39,10 +39,7 @@ public class ConverterScreen extends JFrame {
     public void setMidiFile(File midiFile) {
         this.midiFile = midiFile;
         panelButtons.convert.setEnabled(true);
-    }
-
-    public File getMidiFile() {
-        return midiFile;
+        panelButtons.generateFile.setEnabled(true);
     }
 
     public void clear() {
@@ -79,7 +76,7 @@ public class ConverterScreen extends JFrame {
                     if (msg instanceof ShortMessage) {
                         ShortMessage sm = (ShortMessage) msg;
                         channelActivity[sm.getChannel()]++;
-                        if (sm.getChannel() == panelOptions.getMidiChannel()-1) {
+                        if (panelOptions.isValidChannel(sm.getChannel())) {
                             if (sm.getCommand() == ShortMessage.NOTE_ON) {
                                 long tick = Math.round(event.getTick() / panelOptions.getMIDIRatio());
                                 if (firstTick <= 0) {
