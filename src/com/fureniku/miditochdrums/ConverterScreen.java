@@ -133,11 +133,20 @@ public class ConverterScreen extends JFrame {
         panelOutput.refreshText(panelOptions);
     }
 
+    long prevTick = 0;
+
     public void printNote(long tick, int id, boolean cymbal) {
         long tickFinal = tick - firstTick + panelOptions.getStartTime();
-        panelOutput.addToList("  " + tickFinal + " = N " + id + " 0");
+        if (prevTick == tickFinal) {
+            if (id == 4) {
+                System.out.println("Double crash! Adjusting to be GY");
+                id = 2;
+            }
+        }
         if (cymbal) {
             panelOutput.addToList("  " + tickFinal + " = N " + (id + 64) + " 0");
         }
+        panelOutput.addToList("  " + tickFinal + " = N " + id + " 0");
+        prevTick = tickFinal;
     }
 }
