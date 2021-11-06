@@ -22,7 +22,7 @@ public class PanelNotes extends PanelUI {
     JTextField yellowText = new JTextField("48,50"); //2
     JTextField blueText = new JTextField("47"); //3
     JTextField greenText = new JTextField("41,43,45"); //4
-    JTextField cymbalYellowText = new JTextField("42,46,54,55,95"); //2
+    JTextField cymbalYellowText = new JTextField("42,44,46,54,55,95"); //2
     JTextField cymbalBlueText = new JTextField("51,52,53,59"); //3
     JTextField cymbalGreenText = new JTextField("49,57"); //4
     JTextField ignoredText = new JTextField("0");
