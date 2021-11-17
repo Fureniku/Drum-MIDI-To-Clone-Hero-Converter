@@ -12,8 +12,9 @@ public class PanelOptions extends PanelUI {
     JTextField channelId = new JTextField("10");
     JTextField midiTicks = new JTextField("1920");
     JTextField chTicks = new JTextField("768");
-    JCheckBox fullFile = new JCheckBox("Full File", true);
+    JCheckBox fullFile = new JCheckBox("Full File", false);
     JCheckBox auto2xKick = new JCheckBox("Auto 2x Kick",true);
+    JCheckBox autoToms = new JCheckBox("Auto Tom Optimisation",true);
     JLabel startPosLabel = new JLabel("Drum Start Time:");
     JLabel kickTimeLabel = new JLabel("Max Kick Time:");
     JLabel channelIdLabel = new JLabel("Drum MIDI Channel ID (Default is 10):");
@@ -73,6 +74,13 @@ public class PanelOptions extends PanelUI {
         c.anchor = GridBagConstraints.CENTER;
         this.add(kickTime, c);
 
+        c.gridx = 0;
+        c.gridy = 2;
+        c.weightx = 0.7;
+        c.insets = new Insets(5,10,10,5);
+        c.anchor = GridBagConstraints.CENTER;
+        this.add(autoToms, c);
+
         c.gridx = 1;
         c.gridy = 2;
         c.weightx = 0.5;
@@ -117,6 +125,8 @@ public class PanelOptions extends PanelUI {
     public boolean shouldAuto2xKick() {
         return auto2xKick.isSelected();
     }
+
+    public boolean shouldAutoToms() { return autoToms.isSelected(); }
 
     public int getKickTime() {
         return Integer.valueOf(kickTime.getText());

@@ -17,15 +17,16 @@ public class PanelNotes extends PanelUI {
     JLabel cymbalGreenLabel = new JLabel("Green Cymbal (Crash)");
     JLabel ignoredLabel = new JLabel("Ignored Notes");
 
-    JTextField kickText = new JTextField("36"); //0
-    JTextField redText = new JTextField("38,40"); //1
-    JTextField yellowText = new JTextField("48,50"); //2
-    JTextField blueText = new JTextField("47"); //3
-    JTextField greenText = new JTextField("41,43,45"); //4
-    JTextField cymbalYellowText = new JTextField("42,44,46,54,55,95"); //2
-    JTextField cymbalBlueText = new JTextField("51,52,53,59"); //3
-    JTextField cymbalGreenText = new JTextField("49,57"); //4
-    JTextField ignoredText = new JTextField("0");
+    JTextField kickText = new JTextField("35,36"); //0 - acoustic bass drum, bass drum
+    JTextField redText = new JTextField("38,39,40"); //1 - acoustic snare, hand clap, electric snarer
+    JTextField yellowText = new JTextField("48,50"); //2 - hi mid tom, hi tom
+    JTextField blueText = new JTextField("45,47,56"); //3 - low tom, low mid tom, cowbell
+    JTextField greenText = new JTextField("41,43"); //4 - low floor tom, high floor tom
+    JTextField cymbalYellowText = new JTextField("42,44,46,54,55,95"); //2 - closed HH, pedal HH, open HH, tambourine, splash
+    JTextField cymbalBlueText = new JTextField("51,52,53,59"); //3 - ride 1, china, ride bell, ride 2
+    JTextField cymbalGreenText = new JTextField("49,57"); //4 - crash 1, crash 2
+    JTextField ignoredText = new JTextField("0,37,58"); //null, side stick, vibra slap, everything 60+ is non-standard too.
+    //56 - cowbell
 
     GridBagLayout layout = new GridBagLayout();
 
@@ -146,5 +147,17 @@ public class PanelNotes extends PanelUI {
         }
 
         return false;
+    }
+
+    public void setYellow(String str) {
+        yellowText.setText(str);
+    }
+
+    public void setBlue(String str) {
+        blueText.setText(str);
+    }
+
+    public void setGreen(String str) {
+        greenText.setText(str);
     }
 }

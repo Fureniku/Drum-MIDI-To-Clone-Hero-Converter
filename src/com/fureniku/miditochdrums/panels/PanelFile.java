@@ -29,6 +29,7 @@ public class PanelFile extends PanelUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFileChooser chooser = new JFileChooser();
+                chooser.setCurrentDirectory(new File("."));
                 FileFilter filter = new FileNameExtensionFilter("MIDI file", "mid", "midi");
                 chooser.setFileFilter(filter);
 
