@@ -1,6 +1,7 @@
 package com.fureniku.miditochdrums.panels;
 
 import com.fureniku.miditochdrums.ConverterScreen;
+import com.fureniku.miditochdrums.MIDIToCHDrums;
 
 import javax.swing.*;
 import java.awt.*;
@@ -141,12 +142,34 @@ public class PanelNotes extends PanelUI {
     public boolean isCorrectDrum(JTextField text, int id) {
         String[] str = text.getText().replaceAll(" ", "").split(",");
         for (int i = 0; i < str.length; i++) {
-            if (Integer.valueOf(str[i]) == id) {
+            if (parseInt(str[i]) == id) {
                 return true;
+            }
+            if (str[i].charAt(0) == '<') {
+                System.out.println(id + " is less than threshold " + Integer.valueOf(str[i].substring(1)));
+                if (id < Integer.valueOf(str[i].substring(1))) {
+                    return true;
+                }
+            }
+            if (str[i].charAt(0) == '>') {
+                System.out.println(id + " is greater than threshold " + Integer.valueOf(str[i].substring(1)));
+                if (id > Integer.valueOf(str[i].substring(1))) {
+                    return true;
+                }
             }
         }
 
         return false;
+    }
+
+    private int parseInt(String str) {
+        int i = -1;
+        try {
+            i = Integer.parseInt(str);
+        } catch (NumberFormatException nfe) {
+            System.out.println("Failed to parse number from " + str);
+        }
+        return i;
     }
 
     public void setYellow(String str) {

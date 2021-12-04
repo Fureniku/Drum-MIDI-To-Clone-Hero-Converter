@@ -147,6 +147,9 @@ public class PanelOptions extends PanelUI {
     }
 
     public boolean isValidChannel(int channel) {
+        if (channelId.getText().equals("-1")) {
+            return true;
+        }
         int[] channels = getMidiChannels();
         for (int i = 0; i < channels.length; i++) {
             if (channels[i]-1 == channel) {

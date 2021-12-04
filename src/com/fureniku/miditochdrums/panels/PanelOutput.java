@@ -106,10 +106,12 @@ public class PanelOutput extends PanelUI {
         } else {
             text.setLineWrap(true);
             text.setWrapStyleWord(true);
-            text.setText("Some errors were found. Please make sure all IDs are mapped to relevant notes or the ignore list, and you are on the right channel, then try again.\n");
+            text.setText("Some errors were found. Please make sure all IDs are mapped to relevant notes or the ignore list, and you are on the right channel, then try again.\n\n" +
+                    "You may need to add <35 and >81 to the ignored notes to limit to standard drum range.\n\n");
             for (int i = 0; i < errors.size(); i++) {
                 text.append(errors.get(i) + "\n");
             }
+            text.append("\nThere are errors. Please scroll to the top of the output for more information.");
         }
     }
 

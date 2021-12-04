@@ -149,6 +149,7 @@ public class ConverterScreen extends JFrame {
                     for (int k = 0; k < channelActivity.length; k++) {
                         panelOutput.addLog("Channel " + (k+1) + ": " + channelActivity[k] + " Notes");
                     }
+                    panelOutput.addLog("\nSet channel ID to -1 to use all available channels.");
                 }
             }
 
