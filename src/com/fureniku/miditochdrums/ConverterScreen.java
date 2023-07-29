@@ -222,25 +222,19 @@ public class ConverterScreen extends JFrame {
         if (finalUseToms.size() == 4) {
             panelNotes.setYellow(finalUseToms.get(3) + "");
             panelNotes.setBlue(finalUseToms.get(2) + "");
-            panelNotes.setGreen(finalUseToms.get(1) + "");
-            panelNotes.setGreen(finalUseToms.get(0) + "");
+            panelNotes.setGreen(finalUseToms.get(1) + "," + finalUseToms.get(0));
         }
 
         if (finalUseToms.size() == 5) {
             panelNotes.setYellow(finalUseToms.get(4) + "");
-            panelNotes.setBlue(finalUseToms.get(3) + "");
-            panelNotes.setBlue(finalUseToms.get(2) + "");
-            panelNotes.setGreen(finalUseToms.get(1) + "");
-            panelNotes.setGreen(finalUseToms.get(0) + "");
+            panelNotes.setBlue(finalUseToms.get(3) + "," + finalUseToms.get(2));
+            panelNotes.setGreen(finalUseToms.get(1) + "," + finalUseToms.get(0));
         }
 
         if (finalUseToms.size() == 6) {
-            panelNotes.setYellow(finalUseToms.get(5) + "");
-            panelNotes.setYellow(finalUseToms.get(4) + "");
-            panelNotes.setBlue(finalUseToms.get(3) + "");
-            panelNotes.setBlue(finalUseToms.get(2) + "");
-            panelNotes.setGreen(finalUseToms.get(1) + "");
-            panelNotes.setGreen(finalUseToms.get(0) + "");
+            panelNotes.setYellow(finalUseToms.get(5) + ","+ finalUseToms.get(4));
+            panelNotes.setBlue(finalUseToms.get(3) + "," + finalUseToms.get(2));
+            panelNotes.setGreen(finalUseToms.get(1) + "," + finalUseToms.get(0));
         }
     }
 
